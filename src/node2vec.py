@@ -86,6 +86,7 @@ class Graph():
             norm_const = sum(unnormalized_probs)
             normalized_probs =  [float(u_prob)/norm_const for u_prob in unnormalized_probs]
             alias_nodes[node] = alias_setup(normalized_probs)
+            # print alias_nodes
 
         alias_edges = {}
         triads = {}
@@ -97,10 +98,10 @@ class Graph():
             for edge in G.edges():
                 alias_edges[edge] = self.get_alias_edge(edge[0], edge[1])
                 alias_edges[(edge[1], edge[0])] = self.get_alias_edge(edge[1], edge[0])
+                # print alias_edges
 
         self.alias_nodes = alias_nodes
         self.alias_edges = alias_edges
-
         return
 
 

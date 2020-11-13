@@ -31,10 +31,10 @@ def parse_args():
     parser.add_argument('--dimensions', type=int, default=128,
                         help='Number of dimensions. Default is 128.')
 
-    parser.add_argument('--walk-length', type=int, default=80,
+    parser.add_argument('--walk-length', type=int, default=10,
                         help='Length of walk per source. Default is 80.')
 
-    parser.add_argument('--num-walks', type=int, default=10,
+    parser.add_argument('--num-walks', type=int, default=1,
                         help='Number of walks per source. Default is 10.')
 
     parser.add_argument('--window-size', type=int, default=10,
@@ -120,19 +120,22 @@ if __name__ == "__main__":
     # main(args)
     # args = parse_args()
     fin_walk = []
-    while 1:
-        args = parse_args()
-        path = raw_input('PATH:')
-        if len(path) != 0:
-            args = parse_args()
-            args.input = path
-            fin_walk += main(args)
-
-            print 'walk finished'
-        else:
-            learn_embeddings(fin_walk)
-            print "done"
-            break
+    args = parse_args()
+    path = raw_input('PATH:')
+    if len(path) != 0:
+        args.input = path
+        fin_walk = main(args)
+        # print node2vec.alias_nodes
+        del args
+        print 'walk finished'
+    print fin_walk
+    with open('/Users/ragami/Documents/node2vec/data/walktest.txt', 'w') as f:
+        for i in fin_walk:
+            for j in i:
+                f.write(str(j))
+                f.write(' ')
+            f.write('\n')
+        f.close()
 
 
         # args.input='/Users/ragami/Documents/node2vec/graph/53.edgelist'

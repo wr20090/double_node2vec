@@ -25,7 +25,7 @@ def parse_args():
     parser.add_argument('--input', nargs='?', default='/Users/ragami/Documents/node2vec/graph/51.edgelist',
                         help='Input graph path')
 
-    parser.add_argument('--output', nargs='?', default='/Users/ragami/Documents/node2vec/emb/weighted.emb',
+    parser.add_argument('--output', nargs='?', default='/Users/ragami/Documents/node2vec/emb/weighted4.emb',
                         help='Embeddings path')
 
     parser.add_argument('--dimensions', type=int, default=128,
