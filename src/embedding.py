@@ -29,7 +29,7 @@ def learn_embeddings(walks, dimensions, output):
     return
 
 
-for i in range(50, 550, 50):
+for i in range(75, 525, 25):
     path = path_front + str(i) + path_behind
     learn_embeddings(l,i,path)
 # learn_embeddings(l,50,'/Users/ragami/Documents/node2vec/emb/test.emb')
